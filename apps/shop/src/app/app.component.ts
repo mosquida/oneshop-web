@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'shop-web-root',
+  selector: 'oneshop-web-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
