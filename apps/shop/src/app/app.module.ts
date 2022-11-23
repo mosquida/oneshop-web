@@ -8,7 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-
+import { UiModule } from '@oneshop-web/ui';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products-list', component: ProductsListComponent },
@@ -23,7 +23,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule],
   providers: [],
   bootstrap: [AppComponent],
 })

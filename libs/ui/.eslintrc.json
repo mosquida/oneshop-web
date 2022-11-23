@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "oneshopWeb",
+            "prefix": "libUi",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "oneshop-web",
+            "prefix": "lib-ui",
             "style": "kebab-case"
           }
         ]
