@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@oneshop-web/orders": ["libs/orders/src/index.ts"],
+      "@oneshop-web/products": ["libs/products/src/index.ts"],
+      "@oneshop-web/ui": ["libs/ui/src/index.ts"],
+      "@oneshop-web/users": ["libs/users/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
