@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -9,6 +10,9 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@oneshop-web/ui';
+
+import { ButtonModule } from 'primeng/button';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products-list', component: ProductsListComponent },
@@ -23,7 +27,13 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    UiModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
