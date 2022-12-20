@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@oneshop-web/auth": ["libs/auth/src/index.ts"],
+      "@oneshop-web/categories": ["libs/categories/src/index.ts"],
       "@oneshop-web/orders": ["libs/orders/src/index.ts"],
       "@oneshop-web/products": ["libs/products/src/index.ts"],
       "@oneshop-web/ui": ["libs/ui/src/index.ts"],

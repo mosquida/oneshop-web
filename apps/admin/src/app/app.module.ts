@@ -7,11 +7,17 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 
-import { ButtonModule } from 'primeng/button';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
+
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { ToolbarModule } from 'primeng/toolbar';
+import { TableModule } from 'primeng/table';
+
+const PRIMENG_MODULE = [ButtonModule, CardModule, ToolbarModule, TableModule];
 
 @NgModule({
   declarations: [
@@ -26,7 +32,7 @@ import { CategoryListComponent } from './components/category/category-list/categ
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
-    ButtonModule,
+    ...PRIMENG_MODULE,
   ],
   providers: [],
   bootstrap: [AppComponent],
