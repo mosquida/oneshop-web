@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService, Category } from '@oneshop-web/categories';
 
 @Component({
   selector: 'oneshop-web-category-list',
@@ -6,20 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-list.component.scss'],
 })
 export class CategoryListComponent implements OnInit {
-  categories = [
-    {
-      id: '1',
-      name: 'John',
-      quantity: '2',
-    },
-    {
-      id: '1',
-      name: 'John',
-      quantity: '2',
-    },
-  ];
+  categories: Category[] = [];
 
-  constructor() {}
+  constructor(private categoriesService: CategoriesService) {}
 
-  ngOnInit(): void {}
+  // Start on component load
+  // subscribe = observe if data is available, then use it, like async .then()
+  ngOnInit(): void {
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories) => (this.categories = categories));
+  }
 }

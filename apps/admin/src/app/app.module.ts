@@ -11,7 +11,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -32,6 +32,7 @@ const PRIMENG_MODULE = [ButtonModule, CardModule, ToolbarModule, TableModule];
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
+    HttpClientModule,
     ...PRIMENG_MODULE,
   ],
   providers: [],
