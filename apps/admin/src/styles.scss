@@ -4,3 +4,15 @@
 
 /* You can add global styles to this file, and also import other style files */
 @import '../../../styles/globals';
+
+.p-field * {
+  display: block;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+input {
+  margin-top: 5px;
+}

@@ -1,0 +1,57 @@
+<div class="w-full grid grid-cols-1 gap-4">
+  <!-- <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 2xl:col-span-2"> -->
+
+  <p-button
+    label="Back"
+    icon="pi pi-angle-left"
+    styleClass="p-button-secondary p-button-sm"
+    size="small"
+  ></p-button>
+
+  <p-card header="New Category" subheader="Add new Categories" styleClass="">
+    <form [formGroup]="form">
+      <div class="pt-5">
+        <div class="p-field pb-5">
+          <label for="name">Name</label>
+          <input
+            formControlName="name"
+            id="name"
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          />
+          <small
+            *ngIf="
+              (form.controls.name.touched || isSubmitted) &&
+              form.controls.name.invalid
+            "
+            class="p-error"
+            >Name is Required</small
+          >
+        </div>
+
+        <div class="p-field">
+          <label>Color</label>
+          <p-colorPicker formControlName="color"></p-colorPicker>
+          <small
+            *ngIf="
+              (form.controls.name.touched || isSubmitted) &&
+              form.controls.name.invalid
+            "
+            class="p-error"
+            >Color is Required</small
+          >
+        </div>
+
+        <p-button
+          label="Create"
+          icon="pi pi-plus"
+          styleClass="bg-indigo-600 p-button-sm mt-7"
+          size="small"
+          (onClick)="onSumbit()"
+        ></p-button>
+      </div>
+    </form>
+  </p-card>
+  <!-- </div> -->
+</div>
