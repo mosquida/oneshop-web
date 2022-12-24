@@ -7,6 +7,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -20,6 +21,8 @@ import { TableModule } from 'primeng/table';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { ToastModule } from 'primeng/toast';
+import { CategoriesService } from '@oneshop-web/categories';
 
 const PRIMENG_MODULE = [
   InputTextModule,
@@ -28,6 +31,7 @@ const PRIMENG_MODULE = [
   ToolbarModule,
   TableModule,
   ColorPickerModule,
+  ToastModule,
 ];
 
 @NgModule({
@@ -49,7 +53,7 @@ const PRIMENG_MODULE = [
     ReactiveFormsModule,
     ...PRIMENG_MODULE,
   ],
-  providers: [],
+  providers: [MessageService, CategoriesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
