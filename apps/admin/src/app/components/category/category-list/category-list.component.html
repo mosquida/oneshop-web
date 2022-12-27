@@ -31,7 +31,9 @@
         <ng-template pTemplate="header">
           <tr>
             <th>Id</th>
-            <th>Name</th>
+            <th pSortableColumn="name">
+              Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
             <th>Color</th>
             <th></th>
           </tr>
