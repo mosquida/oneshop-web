@@ -8,9 +8,14 @@
     icon="pi pi-angle-left"
     styleClass="p-button-secondary p-button-sm"
     size="small"
+    routerLink="/category"
   ></p-button>
 
-  <p-card header="New Category" subheader="Add new Categories" styleClass="">
+  <p-card
+    [header]="editMode ? 'Edit Category' : 'New Category'"
+    [subheader]="editMode ? 'Edit Existing Category' : 'Add New Category'"
+    styleClass=""
+  >
     <form [formGroup]="form">
       <div class="pt-5">
         <div class="p-field pb-5">
@@ -46,7 +51,7 @@
         </div>
 
         <p-button
-          label="Create"
+          [label]="editMode ? 'Update' : 'Create'"
           icon="pi pi-plus"
           styleClass="bg-indigo-600 p-button-sm mt-7"
           size="small"
