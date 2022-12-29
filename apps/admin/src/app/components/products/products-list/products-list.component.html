@@ -1,0 +1,78 @@
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+  acceptButtonStyleClass="p-button-text"
+></p-confirmDialog>
+
+<p-toast></p-toast>
+
+<div class="w-full grid grid-cols-1 gap-4">
+  <!-- <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 2xl:col-span-2"> -->
+  <p-card header="Products" subheader="List of Products" styleClass="">
+    <div class="grid">
+      <div class="p-toolbar-group-left">
+        <p-button
+          label="New"
+          icon="pi pi-plus"
+          styleClass="bg-indigo-600 p-button-sm"
+          size="small"
+          routerLink="/products/new"
+        ></p-button>
+      </div>
+    </div>
+
+    <div class="grid pt-5">
+      <p-table
+        [value]="products"
+        styleClass="p-datatable-gridlines"
+        [tableStyle]="{ 'min-width': '5rem' }"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name">
+              Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th>Image</th>
+            <th pSortableColumn="brand">
+              brand <p-sortIcon field="brand"></p-sortIcon>
+            </th>
+            <th pSortableColumn="price">
+              price <p-sortIcon field="price"></p-sortIcon>
+            </th>
+            <th pSortableColumn="stock">
+              stock <p-sortIcon field="stock"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.image }}</td>
+            <td>{{ product.brand }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+
+            <td>
+              <p-button
+                (onClick)="editProducts(product._id)"
+                label=""
+                icon="pi pi-file-edit"
+                styleClass="p-button-warning p-button-sm mr-5"
+                size="small"
+              ></p-button>
+              <p-button
+                (onClick)="deleteProducts(product._id)"
+                label=""
+                icon="pi pi-trash"
+                styleClass="p-button-danger p-button-sm"
+                size="small"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+  <!-- </div> -->
+</div>

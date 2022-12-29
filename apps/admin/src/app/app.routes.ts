@@ -3,6 +3,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
 
 export const appRoutes: Route[] = [
   {
@@ -24,6 +25,11 @@ export const appRoutes: Route[] = [
       {
         path: 'category/edit/:id',
         component: CategoryFormComponent,
+      },
+
+      {
+        path: 'products',
+        component: ProductsListComponent,
       },
     ],
   },

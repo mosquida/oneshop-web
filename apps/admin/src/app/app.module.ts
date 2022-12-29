@@ -26,6 +26,8 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { CategoriesService } from '@oneshop-web/categories';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { ProductsFormComponent } from './components/products/products-form/products-form.component';
 
 const PRIMENG_MODULE = [
   InputTextModule,
@@ -47,6 +49,8 @@ const PRIMENG_MODULE = [
     ShellComponent,
     CategoryListComponent,
     CategoryFormComponent,
+    ProductsListComponent,
+    ProductsFormComponent,
   ],
   imports: [
     BrowserModule,
