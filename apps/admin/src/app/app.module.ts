@@ -24,6 +24,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { EditorModule } from 'primeng/editor';
 
 import { CategoriesService } from '@oneshop-web/categories';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
@@ -38,6 +42,10 @@ const PRIMENG_MODULE = [
   ColorPickerModule,
   ToastModule,
   ConfirmDialogModule,
+  InputTextareaModule,
+  InputNumberModule,
+  InputSwitchModule,
+  EditorModule,
 ];
 
 @NgModule({

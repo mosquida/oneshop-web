@@ -1,1 +1,156 @@
-<p>products-form works!</p>
+<p-toast></p-toast>
+
+<div class="w-full grid grid-cols-1 gap-4">
+  <!-- <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 2xl:col-span-2"> -->
+
+  <p-button
+    label="Back"
+    icon="pi pi-angle-left"
+    styleClass="p-button-secondary p-button-sm"
+    size="small"
+    routerLink="/products"
+  ></p-button>
+
+  <p-card
+    [header]="editMode ? 'Edit Product' : 'New Product'"
+    [subheader]="editMode ? 'Edit Existing Product' : 'Add New Product'"
+    styleClass=""
+  >
+    <form [formGroup]="form">
+      <div class="pt-5">
+        <div class="p-field pb-5">
+          <label for="name">Name</label>
+          <input
+            formControlName="name"
+            id="name"
+            type="text"
+            pInputText
+            class="p-inputtext-sm w-full"
+          />
+          <small
+            *ngIf="
+              (form.controls.name.touched || isSubmitted) &&
+              form.controls.name.invalid
+            "
+            class="p-error"
+            >Name is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="description">Description</label>
+          <input
+            formControlName="description"
+            id="description"
+            type="text"
+            pInputText
+            class="p-inputtext-sm w-full"
+          />
+          <small
+            *ngIf="
+              (form.controls.description.touched || isSubmitted) &&
+              form.controls.description.invalid
+            "
+            class="p-error"
+            >Description is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="richDescription">Rich Description</label>
+          <p-editor
+            formControlName="richDescription"
+            [style]="{ height: '320px' }"
+          ></p-editor>
+          <small
+            *ngIf="
+              (form.controls.richDescription.touched || isSubmitted) &&
+              form.controls.richDescription.invalid
+            "
+            class="p-error"
+            >Rich Description is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="brand">Brand</label>
+          <input
+            formControlName="brand"
+            id="brand"
+            type="text"
+            pInputText
+            class="p-inputtext-sm w-full"
+          />
+          <small
+            *ngIf="
+              (form.controls.brand.touched || isSubmitted) &&
+              form.controls.brand.invalid
+            "
+            class="p-error"
+            >Brand is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="price">Price</label>
+          <p-inputNumber
+            formControlName="price"
+            [showButtons]="true"
+            inputId="stacked"
+            mode="currency"
+            currency="USD"
+            styleClass=""
+          ></p-inputNumber>
+
+          <small
+            *ngIf="
+              (form.controls.price.touched || isSubmitted) &&
+              form.controls.price.invalid
+            "
+            class="p-error"
+            >Price is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="stock">Stock</label>
+          <p-inputNumber
+            formControlName="stock"
+            inputId="integeronly"
+          ></p-inputNumber>
+          <small
+            *ngIf="
+              (form.controls.stock.touched || isSubmitted) &&
+              form.controls.stock.invalid
+            "
+            class="p-error"
+            >Number Stock is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="isFeatured">IsFeatured</label>
+          <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
+
+          <small
+            *ngIf="
+              (form.controls.isFeatured.touched || isSubmitted) &&
+              form.controls.isFeatured.invalid
+            "
+            class="p-error"
+            >Rich Description is Required</small
+          >
+        </div>
+
+        <p-button
+          [label]="editMode ? 'Update' : 'Create'"
+          icon="pi pi-plus"
+          styleClass="bg-indigo-600 p-button-sm mt-7"
+          size="small"
+          (onClick)="onSumbit()"
+        ></p-button>
+      </div>
+    </form>
+  </p-card>
+  <!-- </div> -->
+</div>

@@ -11,7 +11,7 @@
   <!-- <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 2xl:col-span-2"> -->
   <p-card header="Products" subheader="List of Products" styleClass="">
     <div class="grid">
-      <div class="p-toolbar-group-left">
+      <div class="p-toolbar-group-left over">
         <p-button
           label="New"
           icon="pi pi-plus"
@@ -43,6 +43,7 @@
             <th pSortableColumn="stock">
               stock <p-sortIcon field="stock"></p-sortIcon>
             </th>
+            <th></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product>
