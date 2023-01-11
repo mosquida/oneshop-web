@@ -28,6 +28,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { EditorModule } from 'primeng/editor';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { CategoriesService } from '@oneshop-web/categories';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
@@ -46,6 +47,7 @@ const PRIMENG_MODULE = [
   InputNumberModule,
   InputSwitchModule,
   EditorModule,
+  DropdownModule,
 ];
 
 @NgModule({

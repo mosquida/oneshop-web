@@ -92,6 +92,30 @@
         </div>
 
         <div class="p-field pb-5">
+          <label for="brand">Category</label>
+          <p-dropdown
+            [options]="categories"
+            formControlName="category"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+            optionValue="_id"
+            [showClear]="true"
+            placeholder="Select a Category"
+          >
+          </p-dropdown>
+
+          <small
+            *ngIf="
+              (form.controls.brand.touched || isSubmitted) &&
+              form.controls.brand.invalid
+            "
+            class="p-error"
+            >Brand is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
           <label for="price">Price</label>
           <p-inputNumber
             formControlName="price"

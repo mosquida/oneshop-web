@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CategoriesService, Category } from '@oneshop-web/categories';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
+import { filter, flatMap, map, timer } from 'rxjs';
 
 @Component({
   selector: 'oneshop-web-products-form',
@@ -16,7 +16,7 @@ export class ProductsFormComponent implements OnInit {
   isSubmitted = false;
   editMode = false;
   id: string;
-  text2;
+  categories: Category[];
 
   // FormBuilder makes FormGroup thas has Formcontrol(for inputs)
   constructor(
@@ -33,6 +33,7 @@ export class ProductsFormComponent implements OnInit {
       description: ['', Validators.required],
       richDescription: ['', Validators.required],
       image: ['', Validators.required],
+      category: ['', Validators.required],
       brand: ['', Validators.required],
       price: ['', Validators.required],
       stock: ['', Validators.required],
@@ -40,6 +41,8 @@ export class ProductsFormComponent implements OnInit {
     });
 
     this._checkEditMode();
+
+    this._getCategories();
   }
 
   private _checkEditMode() {
@@ -55,6 +58,15 @@ export class ProductsFormComponent implements OnInit {
         });
       }
     });
+  }
+
+  private _getCategories() {
+    this.categoriesService
+      .getCategories()
+
+      .subscribe((categories) => {
+        this.categories = categories;
+      });
   }
 
   private _submitUpdateCategory(id: string, category: Category) {
@@ -110,7 +122,7 @@ export class ProductsFormComponent implements OnInit {
   }
 
   onSumbit() {
-    // return console.log(this.form.controls);
+    return console.log(this.form.controls);
     this.isSubmitted = true;
 
     if (this.form.invalid) return;
