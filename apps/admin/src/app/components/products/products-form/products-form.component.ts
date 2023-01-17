@@ -17,6 +17,7 @@ export class ProductsFormComponent implements OnInit {
   editMode = false;
   id: string;
   categories: Category[];
+  imgPreviewSrc: string | ArrayBuffer;
 
   // FormBuilder makes FormGroup thas has Formcontrol(for inputs)
   constructor(
@@ -121,6 +122,21 @@ export class ProductsFormComponent implements OnInit {
     });
   }
 
+  onImageUpload(e) {
+    const file = e.target.files[0];
+
+    if (file) {
+      // Turn local file into URL based accessible
+      const fileReader = new FileReader();
+
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        this.imgPreviewSrc = fileReader.result;
+        console.log(fileReader.result);
+      };
+    }
+  }
   onSumbit() {
     return console.log(this.form.controls);
     this.isSubmitted = true;

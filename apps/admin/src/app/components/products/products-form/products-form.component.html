@@ -153,17 +153,31 @@
         </div>
 
         <div class="p-field pb-5">
-          <label for="isFeatured">IsFeatured</label>
-          <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
+          <label for="image">Product Image</label>
+          <input
+            class="p-button-sm !flex"
+            type="file"
+            formControlName="image"
+            accept="image/*"
+            (change)="onImageUpload($event)"
+          />
+          <div>
+            <img [src]="imgPreviewSrc" alt="" class="h-40" />
+          </div>
 
           <small
             *ngIf="
-              (form.controls.isFeatured.touched || isSubmitted) &&
-              form.controls.isFeatured.invalid
+              (form.controls.image.touched || isSubmitted) &&
+              form.controls.image.invalid
             "
             class="p-error"
-            >Rich Description is Required</small
+            >Image is Required</small
           >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="isFeatured">IsFeatured</label>
+          <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
         </div>
 
         <p-button
