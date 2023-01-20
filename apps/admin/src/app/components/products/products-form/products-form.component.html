@@ -157,7 +157,6 @@
           <input
             class="p-button-sm !flex"
             type="file"
-            formControlName="image"
             accept="image/*"
             (change)="onImageUpload($event)"
           />
@@ -168,7 +167,7 @@
           <small
             *ngIf="
               (form.controls.image.touched || isSubmitted) &&
-              form.controls.image.invalid
+              form.controls.image.value === null
             "
             class="p-error"
             >Image is Required</small

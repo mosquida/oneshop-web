@@ -4,7 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CategoriesService, Category } from '@oneshop-web/categories';
 import { MessageService } from 'primeng/api';
-import { filter, flatMap, map, timer } from 'rxjs';
+import { timer } from 'rxjs';
+import { Product, ProductsService } from '@oneshop-web/products';
 
 @Component({
   selector: 'oneshop-web-products-form',
@@ -23,6 +24,7 @@ export class ProductsFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private categoriesService: CategoriesService,
+    private productsService: ProductsService,
     private messageService: MessageService,
     private location: Location,
     private route: ActivatedRoute
@@ -70,14 +72,14 @@ export class ProductsFormComponent implements OnInit {
       });
   }
 
-  private _submitUpdateCategory(id: string, category: Category) {
+  private _submitUpdateProduct(id: string, category) {
     this.categoriesService.updateCategory(id, category).subscribe({
       complete: () => {
         // show sucess toast notification
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'New Category Added',
+          detail: 'Product Updated',
         });
 
         // Redirect back to list of categories
@@ -85,7 +87,8 @@ export class ProductsFormComponent implements OnInit {
           this.location.back();
         });
       },
-      error: () => {
+      error: (error) => {
+        console.log(error);
         // show err toast notification
         this.messageService.add({
           severity: 'error',
@@ -96,14 +99,14 @@ export class ProductsFormComponent implements OnInit {
     });
   }
 
-  private _submitCreateCategory(category: Category) {
-    this.categoriesService.createCategory(category).subscribe({
+  private _submitCreateProduct(product: FormData) {
+    this.productsService.createProduct(product).subscribe({
       complete: () => {
         // show sucess toast notification
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'Category Updated',
+          detail: 'PNew Category Added',
         });
 
         // Redirect back to list of categories
@@ -125,6 +128,9 @@ export class ProductsFormComponent implements OnInit {
   onImageUpload(e) {
     const file = e.target.files[0];
 
+    // Set the file on form image
+    this.form.controls.image.setValue(file);
+
     if (file) {
       // Turn local file into URL based accessible
       const fileReader = new FileReader();
@@ -133,25 +139,28 @@ export class ProductsFormComponent implements OnInit {
 
       fileReader.onload = () => {
         this.imgPreviewSrc = fileReader.result;
-        console.log(fileReader.result);
       };
     }
   }
   onSumbit() {
-    return console.log(this.form.controls);
+    // return console.log(this.form.controls);
     this.isSubmitted = true;
 
     if (this.form.invalid) return;
 
-    const category: Category = {
-      name: this.form.controls.name.value,
-      color: this.form.controls.color.value,
-    };
+    // key, value obj
+    const products: FormData = new FormData();
+
+    //Populate the content as JSON obj
+    Object.keys(this.form.controls).map((key) => {
+      products.append(key, this.form.controls[key].value);
+      // console.log(key, this.form.controls[key].value);
+    });
 
     if (this.editMode) {
-      this._submitUpdateCategory(this.id, category);
+      this._submitUpdateProduct(this.id, products);
     } else {
-      this._submitCreateCategory(category);
+      this._submitCreateProduct(products);
     }
   }
 }
