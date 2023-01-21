@@ -55,9 +55,17 @@ export class ProductsFormComponent implements OnInit {
         this.id = params.id;
 
         // Populate the form fields
-        this.categoriesService.getCategory(params.id).subscribe((category) => {
-          this.form.controls.name.setValue(category.name);
-          this.form.controls.color.setValue(category.color);
+        this.productsService.getProduct(this.id).subscribe((product) => {
+          this.form.controls.name.setValue(product.name);
+          this.form.controls.description.setValue(product.description);
+          this.form.controls.richDescription.setValue(product.richDescription);
+          this.form.controls.brand.setValue(product.brand);
+          this.form.controls.category.setValue(product.category['_id']);
+          this.form.controls.stock.setValue(product.stock);
+          this.form.controls.price.setValue(product.price);
+          this.form.controls.isFeatured.setValue(product.isFeatured);
+          this.form.controls.image.setValue(product.image);
+          this.imgPreviewSrc = product.image;
         });
       }
     });
@@ -72,8 +80,8 @@ export class ProductsFormComponent implements OnInit {
       });
   }
 
-  private _submitUpdateProduct(id: string, category) {
-    this.categoriesService.updateCategory(id, category).subscribe({
+  private _submitUpdateProduct(id: string, product: FormData) {
+    this.productsService.updateProduct(id, product).subscribe({
       complete: () => {
         // show sucess toast notification
         this.messageService.add({

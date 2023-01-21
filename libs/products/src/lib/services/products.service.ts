@@ -14,7 +14,7 @@ export class ProductsService {
     return this.http.get<Product[]>(`${config.API_URL}/products`);
   }
 
-  getProduct(id: string): Observable<Product> {
+  getProduct(id: string): Observable<Product> | Observable<unknown> {
     return this.http.get<Product>(`${config.API_URL}/products/${id}`);
   }
 
@@ -27,6 +27,6 @@ export class ProductsService {
   }
 
   deleteProduct(id: string) {
-    return this.http.delete(`${config.API_URL}/categories/${id}`);
+    return this.http.delete(`${config.API_URL}/products/${id}`);
   }
 }

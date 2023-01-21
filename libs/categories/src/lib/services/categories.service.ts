@@ -14,7 +14,7 @@ export class CategoriesService {
     return this.http.get<Category[]>(`${config.API_URL}/categories`);
   }
 
-  getCategory(id: string): Observable<Category> {
+  getCategory(id: string | unknown): Observable<Category> {
     return this.http.get<Category>(`${config.API_URL}/categories/${id}`);
   }
 
