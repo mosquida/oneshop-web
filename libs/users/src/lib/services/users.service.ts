@@ -26,6 +26,6 @@ export class UsersService {
     return this.http.put<User>(`${config.API_URL}/users/${id}`, User);
   }
   deleteUser(id: string) {
-    return this.http.delete(`${config.API_URL}/user${id}`);
+    return this.http.delete(`${config.API_URL}/users/${id}`);
   }
 }
