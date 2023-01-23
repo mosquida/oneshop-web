@@ -47,6 +47,10 @@ export const appRoutes: Route[] = [
         component: UsersListComponent,
       },
       {
+        path: 'users/new',
+        component: UsersFormComponent,
+      },
+      {
         path: 'users/edit/:id',
         component: UsersFormComponent,
       },

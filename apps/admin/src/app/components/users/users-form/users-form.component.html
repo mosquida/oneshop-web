@@ -1,1 +1,151 @@
-<p>users-form works!</p>
+<p-toast></p-toast>
+
+<div class="w-full grid grid-cols-1 gap-4">
+  <!-- <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 2xl:col-span-2"> -->
+
+  <p-button
+    label="Back"
+    icon="pi pi-angle-left"
+    styleClass="p-button-secondary p-button-sm"
+    size="small"
+    routerLink="/category"
+  ></p-button>
+
+  <p-card
+    [header]="editMode ? 'Edit User' : 'New User'"
+    [subheader]="editMode ? 'Edit Existing User' : 'Add New User'"
+    styleClass=""
+  >
+    <form [formGroup]="form">
+      <div class="pt-5">
+        <div class="p-field pb-5">
+          <label for="name">Name</label>
+          <input
+            formControlName="name"
+            id="name"
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          />
+          <small
+            *ngIf="
+              (form.controls.name.touched || isSubmitted) &&
+              form.controls.name.invalid
+            "
+            class="p-error"
+            >Name is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="email">Email</label>
+          <input
+            formControlName="email"
+            id="email"
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          />
+          <small
+            *ngIf="
+              (form.controls.email.touched || isSubmitted) &&
+              form.controls.email.invalid
+            "
+            class="p-error"
+            >Email is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="password">Password</label>
+          <input
+            formControlName="password"
+            id="password"
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          />
+          <small
+            *ngIf="
+              (form.controls.password.touched || isSubmitted) &&
+              form.controls.password.invalid
+            "
+            class="p-error"
+            >Password is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="phone">Phone</label>
+          <input
+            formControlName="phone"
+            id="phone"
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          />
+          <small
+            *ngIf="
+              (form.controls.phone.touched || isSubmitted) &&
+              form.controls.phone.invalid
+            "
+            class="p-error"
+            >Phone is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="address">Address</label>
+          <input
+            formControlName="address"
+            id="address"
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          />
+          <small
+            *ngIf="
+              (form.controls.address.touched || isSubmitted) &&
+              form.controls.address.invalid
+            "
+            class="p-error"
+            >Address is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="country">Country</label>
+          <input
+            formControlName="country"
+            id="country"
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          />
+          <small
+            *ngIf="
+              (form.controls.country.touched || isSubmitted) &&
+              form.controls.country.invalid
+            "
+            class="p-error"
+            >Country is Required</small
+          >
+        </div>
+
+        <div class="p-field pb-5">
+          <label for="isAdmin">Is Admin?</label>
+          <p-inputSwitch formControlName="isAdmin"></p-inputSwitch>
+        </div>
+
+        <p-button
+          [label]="editMode ? 'Update' : 'Create'"
+          icon="pi pi-plus"
+          styleClass="bg-indigo-600 p-button-sm mt-7"
+          size="small"
+          (onClick)="onSumbit()"
+        ></p-button>
+      </div>
+    </form>
+  </p-card>
+  <!-- </div> -->
+</div>

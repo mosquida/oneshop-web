@@ -18,11 +18,14 @@ export class UsersService {
     return this.http.get<User>(`${config.API_URL}/users/${id}`);
   }
 
+  createUser(User: User): Observable<User> {
+    return this.http.post<User>(`${config.API_URL}/users`, User);
+  }
+
   updateUser(id: string, User: User): Observable<User> {
     return this.http.put<User>(`${config.API_URL}/users/${id}`, User);
   }
-
   deleteUser(id: string) {
-    return this.http.delete(`${config.API_URL}/users${id}`);
+    return this.http.delete(`${config.API_URL}/user${id}`);
   }
 }

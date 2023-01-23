@@ -17,7 +17,7 @@
           icon="pi pi-plus"
           styleClass="bg-indigo-600 p-button-sm"
           size="small"
-          routerLink="/category/new"
+          routerLink="/users/new"
         ></p-button>
       </div>
     </div>
@@ -33,6 +33,7 @@
             <th pSortableColumn="name">
               Name <p-sortIcon field="name"></p-sortIcon>
             </th>
+            <th>Email</th>
             <th pSortableColumn="isAdmin">
               Admin <p-sortIcon field="isAdmin"></p-sortIcon>
             </th>
@@ -42,6 +43,7 @@
         <ng-template pTemplate="body" let-category>
           <tr>
             <td>{{ category.name }}</td>
+            <td>{{ category.email }}</td>
             <td *ngIf="category.isAdmin; then admin; else notadmin"></td>
 
             <ng-template #admin>
