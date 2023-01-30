@@ -5,6 +5,9 @@ import { User, UsersService } from '@oneshop-web/users';
 import { MessageService } from 'primeng/api';
 import { Location } from '@angular/common';
 import { timer } from 'rxjs';
+import * as countries from 'i18n-iso-countries';
+
+declare const require;
 
 @Component({
   selector: 'oneshop-web-users-form',
@@ -16,6 +19,7 @@ export class UsersFormComponent implements OnInit {
   isSubmitted = false;
   editMode = false;
   id: string;
+  countries = [];
 
   // FormBuilder makes FormGroup thas has Formcontrol(for inputs)
   constructor(
@@ -38,6 +42,8 @@ export class UsersFormComponent implements OnInit {
     });
 
     this._checkEditMode();
+
+    this._getCountries();
   }
 
   private _checkEditMode() {
@@ -57,6 +63,15 @@ export class UsersFormComponent implements OnInit {
           this.form.controls.address.setValue(user.address);
         });
       }
+    });
+  }
+
+  private _getCountries() {
+    countries.registerLocale(require('i18n-iso-countries/langs/en.json'));
+    this.countries = Object.entries(
+      countries.getNames('en', { select: 'official' })
+    ).map((country) => {
+      return { _id: country[0], name: country[1] };
     });
   }
 

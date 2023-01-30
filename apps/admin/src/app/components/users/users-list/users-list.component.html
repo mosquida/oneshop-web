@@ -37,6 +37,9 @@
             <th pSortableColumn="isAdmin">
               Admin <p-sortIcon field="isAdmin"></p-sortIcon>
             </th>
+            <th pSortableColumn="country">
+              Country <p-sortIcon field="country"></p-sortIcon>
+            </th>
             <th></th>
           </tr>
         </ng-template>
@@ -55,6 +58,7 @@
               Regular
             </ng-template>
 
+            <td>{{ category.country }}</td>
             <td>
               <p-button
                 (onClick)="editUser(category._id)"

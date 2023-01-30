@@ -151,7 +151,7 @@ export class ProductsFormComponent implements OnInit {
     }
   }
   onSumbit() {
-    return console.log(this.form.controls);
+    // return console.log(this.form.controls);
     this.isSubmitted = true;
 
     if (this.form.invalid) return;

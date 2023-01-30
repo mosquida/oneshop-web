@@ -118,21 +118,17 @@
 
         <div class="p-field pb-5">
           <label for="country">Country</label>
-          <input
+          <p-dropdown
+            [options]="countries"
             formControlName="country"
-            id="country"
-            type="text"
-            pInputText
-            class="p-inputtext-sm"
-          />
-          <small
-            *ngIf="
-              (form.controls.country.touched || isSubmitted) &&
-              form.controls.country.invalid
-            "
-            class="p-error"
-            >Country is Required</small
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+            optionValue="_id"
+            [showClear]="true"
+            placeholder="Select a Country"
           >
+          </p-dropdown>
         </div>
 
         <div class="p-field pb-5">
