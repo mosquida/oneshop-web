@@ -23,14 +23,9 @@
     </div>
 
     <div class="grid pt-5">
-      <p-table
-        [value]="categories"
-        styleClass="p-datatable-gridlines"
-        [tableStyle]="{ 'min-width': '5rem' }"
-      >
+      <p-table [value]="categories" [tableStyle]="{ 'min-width': '5rem' }">
         <ng-template pTemplate="header">
           <tr>
-            <th>Id</th>
             <th pSortableColumn="name">
               Name <p-sortIcon field="name"></p-sortIcon>
             </th>
@@ -40,9 +35,13 @@
         </ng-template>
         <ng-template pTemplate="body" let-category>
           <tr>
-            <td>{{ category._id }}</td>
             <td>{{ category.name }}</td>
-            <td>{{ category.color }}</td>
+            <td>
+              <div
+                class="p-3 border rounded-md"
+                [style.backgroundColor]="category.color"
+              ></div>
+            </td>
 
             <td>
               <p-button
