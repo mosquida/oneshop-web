@@ -7,6 +7,8 @@ import { ProductsListComponent } from './components/products/products-list/produ
 import { ProductsFormComponent } from './components/products/products-form/products-form.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { UsersFormComponent } from './components/users/users-form/users-form.component';
+import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
+import { OrdersDetailsComponent } from './components/orders/orders-details/orders-details.component';
 
 export const appRoutes: Route[] = [
   {
@@ -53,6 +55,14 @@ export const appRoutes: Route[] = [
       {
         path: 'users/edit/:id',
         component: UsersFormComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersListComponent,
+      },
+      {
+        path: 'orders/:id',
+        component: OrdersDetailsComponent,
       },
     ],
   },
