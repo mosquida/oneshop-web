@@ -18,14 +18,24 @@
             <th>Total Order</th>
             <th>Date Ordered</th>
             <th>Shipping Status</th>
+            <th></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-order>
           <tr>
             <td>{{ order.user.name }}</td>
             <td>{{ order.totalPrice }}</td>
-            <td>{{ order.dateOrdered }}</td>
+            <td>{{ order.dateOrdered | date }}</td>
             <td>{{ order.shippingStatus }}</td>
+            <td>
+              <p-button
+                (onClick)="showOrderDetails(order._id)"
+                label=""
+                icon="pi pi-file-edit"
+                styleClass="p-button-warning p-button-sm mr-5"
+                size="small"
+              ></p-button>
+            </td>
           </tr>
         </ng-template>
       </p-table>

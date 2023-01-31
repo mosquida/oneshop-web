@@ -2,6 +2,7 @@ import { User } from '@oneshop-web/users';
 import { OrderItem } from './order-item';
 
 export interface Order {
+  _id: string;
   orderItems: OrderItem[];
   shippingAddress: string;
   country: string;

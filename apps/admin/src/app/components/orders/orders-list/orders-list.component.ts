@@ -11,12 +11,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class OrdersListComponent implements OnInit {
   orders: Order[];
 
-  constructor(
-    private ordersService: OrdersService,
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService,
-    private router: Router
-  ) {}
+  constructor(private ordersService: OrdersService, private router: Router) {}
 
   ngOnInit(): void {
     this._getOrderList();
@@ -25,5 +20,9 @@ export class OrdersListComponent implements OnInit {
     this.ordersService
       .getOrders()
       .subscribe((orders) => (this.orders = orders));
+  }
+
+  showOrderDetails(id) {
+    this.router.navigateByUrl(`/orders/${id}`);
   }
 }

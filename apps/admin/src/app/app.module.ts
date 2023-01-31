@@ -30,6 +30,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { EditorModule } from 'primeng/editor';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
+import { FieldsetModule } from 'primeng/fieldset';
 
 import { CategoriesService } from '@oneshop-web/categories';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
@@ -54,6 +55,7 @@ const PRIMENG_MODULE = [
   EditorModule,
   DropdownModule,
   FileUploadModule,
+  FieldsetModule,
 ];
 
 @NgModule({
