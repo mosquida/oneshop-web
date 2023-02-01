@@ -14,10 +14,10 @@
   <p class="pt-5 pb-10 font-bold text-2xl text-gray-700">Order Details</p>
 
   <p-fieldset legend="Order Details" [toggleable]="true" styleClass="mb-10">
-    <div class="grid md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid md:grid-cols-2 xl:grid-cols-3" *ngIf="order">
       <div class="pb-5">
         <p class="font-bold pb-5">Order Id</p>
-        <p>{{ order._id }}</p>
+        <p>{{ orderId || '' }}</p>
       </div>
 
       <div class="pb-5">
@@ -27,13 +27,24 @@
 
       <div class="pb-5">
         <p class="font-bold pb-5">Order Status</p>
-        <p>{{ order.shippingStatus | titlecase }}</p>
+        <p-dropdown
+          [options]="shippingStatusOptions"
+          [ngModel]="shippingStatus"
+          optionLabel="name"
+          [filter]="true"
+          filterBy="name"
+          optionValue="name"
+          [showClear]="true"
+          [placeholder]="order.shippingStatus"
+          (onChange)="onStatusChange($event)"
+        >
+        </p-dropdown>
       </div>
     </div>
   </p-fieldset>
 
   <p-fieldset legend="Order Items" [toggleable]="true" styleClass="mb-10">
-    <p-table [value]="order.orderItems" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="order.orderItems" [tableStyle]="{ 'min-width': '1rem' }">
       <ng-template pTemplate="header">
         <tr>
           <th>Product Name</th>
@@ -41,6 +52,7 @@
           <th>Category</th>
           <th>Price</th>
           <th>Quantity</th>
+          <th>Subtotal</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-order>
@@ -50,13 +62,38 @@
           <td>{{ order.product.category }}</td>
           <td>{{ order.product.price }}</td>
           <td>{{ order.quantity }}</td>
+          <td>{{ order.product.price * order.quantity }}</td>
         </tr>
       </ng-template>
     </p-table>
+    <div class="flex justify-end pt-5">
+      <p>Total Amount:</p>
+      <p class="font-bold pl-3">{{ order.totalPrice }}</p>
+    </div>
   </p-fieldset>
 
-  <p-fieldset legend="Shipping Address" [toggleable]="true" styleClass="mb-10">
-    Content
+  <p-fieldset legend="Shipping Details" [toggleable]="true" styleClass="mb-10">
+    <div class="grid md:grid-cols-2 xl:grid-cols-4">
+      <div class="pb-5">
+        <p class="font-bold pb-5">CustomerName</p>
+        <p>{{ order.user.name }}</p>
+      </div>
+
+      <div class="pb-5">
+        <p class="font-bold pb-5">Customer Email</p>
+        <p>{{ order.user.email }}</p>
+      </div>
+
+      <div class="pb-5">
+        <p class="font-bold pb-5">Customer Phone</p>
+        <p>{{ order.user.phone }}</p>
+      </div>
+
+      <div class="pb-5">
+        <p class="font-bold pb-5">Shipping Address</p>
+        <p>{{ order.shippingAddress }}</p>
+      </div>
+    </div>
   </p-fieldset>
   <!-- </div> -->
 </div>

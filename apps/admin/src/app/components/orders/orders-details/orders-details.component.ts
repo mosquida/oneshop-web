@@ -9,6 +9,15 @@ import { Order, OrdersService } from '@oneshop-web/orders';
 })
 export class OrdersDetailsComponent implements OnInit {
   order: Order;
+  shippingStatusOptions = [
+    { name: 'Pending' },
+    { name: 'Processed' },
+    { name: 'Shipped' },
+    { name: 'Delivered' },
+    { name: 'Failed' },
+  ];
+  shippingStatus: string;
+  orderId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,9 +33,13 @@ export class OrdersDetailsComponent implements OnInit {
       if (params.id) {
         this.ordersService.getOrder(params.id).subscribe((order) => {
           this.order = order;
-          console.log(order);
+          this.orderId = order._id;
         });
       }
     });
+  }
+
+  onStatusChange(event) {
+    console.log(event.value);
   }
 }

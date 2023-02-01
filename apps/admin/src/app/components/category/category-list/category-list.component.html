@@ -37,10 +37,12 @@
           <tr>
             <td>{{ category.name }}</td>
             <td>
-              <div
-                class="p-3 border rounded-md"
-                [style.backgroundColor]="category.color"
-              ></div>
+              <div>
+                <p-colorPicker
+                  [disabled]="true"
+                  [ngModel]="category.color"
+                ></p-colorPicker>
+              </div>
             </td>
 
             <td>
