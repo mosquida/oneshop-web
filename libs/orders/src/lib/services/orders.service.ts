@@ -22,7 +22,8 @@ export class OrdersService {
     return this.http.post<Order>(`${config.API_URL}/orders`, order);
   }
 
-  updateOrder(id: string, order: Order): Observable<Order> {
+  updateOrder(id: string, order: unknown): Observable<Order> {
+    console.log(order);
     return this.http.put<Order>(`${config.API_URL}/orders/${id}`, order);
   }
 

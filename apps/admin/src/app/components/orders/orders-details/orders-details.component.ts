@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Order, OrdersService } from '@oneshop-web/orders';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'oneshop-web-orders-details',
@@ -21,7 +23,8 @@ export class OrdersDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +43,29 @@ export class OrdersDetailsComponent implements OnInit {
   }
 
   onStatusChange(event) {
-    console.log(event.value);
+    const shipStatus = event.value;
+    this.ordersService
+      .updateOrder(this.orderId, { shippingStatus: shipStatus })
+      .subscribe({
+        complete: () => {
+          // show sucess toast notification
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Product Updated',
+          });
+
+          this._getOrderDetails();
+        },
+        error: (error) => {
+          console.log(error);
+          // show err toast notification
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Something went wrong, please try again later',
+          });
+        },
+      });
   }
 }
