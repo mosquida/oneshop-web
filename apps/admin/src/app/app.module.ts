@@ -33,6 +33,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { FieldsetModule } from 'primeng/fieldset';
 
 import { CategoriesService } from '@oneshop-web/categories';
+import { AuthModule } from '@oneshop-web/auth';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductsFormComponent } from './components/products/products-form/products-form.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
@@ -82,6 +83,7 @@ const PRIMENG_MODULE = [
     FormsModule,
     ReactiveFormsModule,
     ...PRIMENG_MODULE,
+    AuthModule,
   ],
   providers: [ConfirmationService, MessageService, CategoriesService],
   bootstrap: [AppComponent],

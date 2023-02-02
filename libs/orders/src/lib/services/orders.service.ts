@@ -23,7 +23,6 @@ export class OrdersService {
   }
 
   updateOrder(id: string, order: unknown): Observable<Order> {
-    console.log(order);
     return this.http.put<Order>(`${config.API_URL}/orders/${id}`, order);
   }
 
