@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'oneshop-web-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
       .login(this.form.controls.email.value, this.form.controls.password.value)
       .subscribe(
         (data) => {
-          console.log(data);
+          this.localStorageService.setToken(data.token);
         },
         (err) => {
           if (err.status !== 404) {
