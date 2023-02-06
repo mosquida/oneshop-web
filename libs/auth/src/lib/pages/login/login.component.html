@@ -1,51 +1,54 @@
-<div class="flex justify-center items-center h-screen">
-  <div class="p-field pb-5">
-    <div class="!flex">
-      <i class="pi pi-key text-2xl pr-5 font-bold text-gray-600"></i>
-      <p class="text-3xl font-bold text-center pb-10">OneShop Login</p>
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <div class="bg-white px-16 py-20 rounded-xl shadow-md">
+    <div class="p-field pb-5">
+      <div class="!flex">
+        <i class="pi pi-key text-2xl pr-5 font-bold text-gray-600"></i>
+        <p class="text-3xl font-bold text-center pb-16">OneShop Login</p>
+      </div>
+
+      <form [formGroup]="form">
+        <label for="email">Email</label>
+        <input
+          formControlName="email"
+          id="email"
+          type="text"
+          pInputText
+          class="p-inputtext-sm w-full"
+        />
+        <small
+          *ngIf="
+            (form.controls.email.touched || isSubmitted) &&
+            form.controls.email.invalid
+          "
+          class="p-error"
+          >Email is Required</small
+        >
+
+        <label for="password" class="mt-10">Password</label>
+        <input
+          formControlName="password"
+          id="password"
+          type="password"
+          pInputText
+          class="p-inputtext-sm w-full"
+        />
+        <small
+          *ngIf="
+            (form.controls.password.touched || isSubmitted) &&
+            form.controls.password.invalid
+          "
+          class="p-error"
+          >Password is Required</small
+        >
+
+        <small class="p-error pt-5">{{ errMessage }}</small>
+        <p-button
+          label="Login"
+          styleClass="bg-indigo-600 p-button-sm mt-7 w-full"
+          size="small"
+          (onClick)="onSubmitLogin()"
+        ></p-button>
+      </form>
     </div>
-
-    <form [formGroup]="form">
-      <label for="email">Email</label>
-      <input
-        formControlName="email"
-        id="email"
-        type="text"
-        pInputText
-        class="p-inputtext-sm w-full"
-      />
-      <small
-        *ngIf="
-          (form.controls.email.touched || isSubmitted) &&
-          form.controls.email.invalid
-        "
-        class="p-error"
-        >Email is Required</small
-      >
-
-      <label for="password" class="mt-10">Password</label>
-      <input
-        formControlName="password"
-        id="password"
-        type="password"
-        pInputText
-        class="p-inputtext-sm w-full"
-      />
-      <small
-        *ngIf="
-          (form.controls.password.touched || isSubmitted) &&
-          form.controls.password.invalid
-        "
-        class="p-error"
-        >Password is Required</small
-      >
-
-      <p-button
-        label="Login"
-        styleClass="bg-indigo-600 p-button-sm mt-7 w-full"
-        size="small"
-        (onClick)="onSubmitLogin()"
-      ></p-button>
-    </form>
   </div>
 </div>
