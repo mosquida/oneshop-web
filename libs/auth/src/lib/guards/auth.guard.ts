@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
 
     if (token) {
       // check if jwt has Admin, convert jwt data to str
-      const decodedToken = JSON.parse(atob(token.split(' ')[1]));
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
       if (decodedToken.isAdmin) return true;
     }
 
