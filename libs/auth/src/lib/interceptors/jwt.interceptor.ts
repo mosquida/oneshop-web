@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
+// HttpInterceptor allows to modify outbound request - add token on req header
 export class JwtInterceptor implements HttpInterceptor {
   constructor(private localStorageService: LocalStorageService) {}
 
