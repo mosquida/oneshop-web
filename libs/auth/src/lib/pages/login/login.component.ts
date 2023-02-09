@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           this.localStorageService.setToken(data.token);
+          this.router.navigateByUrl('/');
         },
         (err) => {
           if (err.status !== 404) {

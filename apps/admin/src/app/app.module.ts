@@ -14,7 +14,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -33,7 +33,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { FieldsetModule } from 'primeng/fieldset';
 
 import { CategoriesService } from '@oneshop-web/categories';
-import { AuthModule } from '@oneshop-web/auth';
+import { AuthModule, JwtInterceptor } from '@oneshop-web/auth';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductsFormComponent } from './components/products/products-form/products-form.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
@@ -85,7 +85,16 @@ const PRIMENG_MODULE = [
     ...PRIMENG_MODULE,
     AuthModule,
   ],
-  providers: [ConfirmationService, MessageService, CategoriesService],
+  providers: [
+    ConfirmationService,
+    MessageService,
+    CategoriesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
