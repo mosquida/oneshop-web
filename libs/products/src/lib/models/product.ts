@@ -1,3 +1,5 @@
+import { Category } from '@oneshop-web/categories';
+
 export interface Product {
   _id?: string;
   name?: string;
@@ -7,7 +9,7 @@ export interface Product {
   images?: string[];
   brand?: string;
   price?: number;
-  category?: unknown;
+  category?: Category;
   stock?: number;
   rating?: number;
   isFeatured?: boolean;

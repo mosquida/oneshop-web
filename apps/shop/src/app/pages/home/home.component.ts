@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product, ProductsService } from '@oneshop-web/products';
 
 @Component({
   selector: 'shop-home',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  products: Product[] = [];
+
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    console.log();
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productsService.getProducts().subscribe((products: Product[]) => {
+      this.products = products;
+    });
   }
 }

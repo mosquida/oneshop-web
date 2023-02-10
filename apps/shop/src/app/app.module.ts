@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { CategoryFilterComponent } from './components/categories/category-filter/category-filter.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
 import { CategoryFilterMobileComponent } from './components/categories/category-filter-mobile/category-filter-mobile.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
     UiModule,
     BrowserAnimationsModule,
     ButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
