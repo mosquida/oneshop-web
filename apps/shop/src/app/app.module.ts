@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@oneshop-web/ui';
@@ -16,10 +15,11 @@ import { CategoryFilterComponent } from './components/categories/category-filter
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
 import { CategoryFilterMobileComponent } from './components/categories/category-filter-mobile/category-filter-mobile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'products-list', component: ProductsListComponent },
+  { path: 'product/:id', component: ProductPageComponent },
 ];
 
 @NgModule({
@@ -27,16 +27,16 @@ const routes: Routes = [
     AppComponent,
     NxWelcomeComponent,
     HomeComponent,
-    ProductsListComponent,
     HeaderComponent,
     FooterComponent,
     CategoryFilterComponent,
     ProductItemComponent,
     CategoryFilterMobileComponent,
+    ProductPageComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
     UiModule,
     BrowserAnimationsModule,
     ButtonModule,

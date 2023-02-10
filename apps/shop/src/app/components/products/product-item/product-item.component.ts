@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '@oneshop-web/products';
 
 @Component({
@@ -7,5 +8,11 @@ import { Product } from '@oneshop-web/products';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent {
+  constructor(private router: Router) {}
+
   @Input() product: Product;
+
+  viewDetails(id: string) {
+    this.router.navigate(['product', id]);
+  }
 }
