@@ -12,6 +12,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@oneshop-web/ui';
 
 import { ButtonModule } from 'primeng/button';
+import { CategoryFilterComponent } from './components/categories/category-filter/category-filter.component';
+import { ProductItemComponent } from './components/products/product-item/product-item.component';
+import { CategoryFilterMobileComponent } from './components/categories/category-filter-mobile/category-filter-mobile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +29,9 @@ const routes: Routes = [
     ProductsListComponent,
     HeaderComponent,
     FooterComponent,
+    CategoryFilterComponent,
+    ProductItemComponent,
+    CategoryFilterMobileComponent,
   ],
   imports: [
     BrowserModule,
