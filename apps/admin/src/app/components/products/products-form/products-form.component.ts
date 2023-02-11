@@ -40,7 +40,7 @@ export class ProductsFormComponent implements OnInit {
       brand: ['', Validators.required],
       price: ['', Validators.required],
       stock: ['', Validators.required],
-      isFeatured: ['', Validators.required],
+      isFeatured: [false],
     });
 
     this._checkEditMode();
@@ -151,7 +151,6 @@ export class ProductsFormComponent implements OnInit {
     }
   }
   onSumbit() {
-    // return console.log(this.form.controls);
     this.isSubmitted = true;
 
     if (this.form.invalid) return;
@@ -162,12 +161,13 @@ export class ProductsFormComponent implements OnInit {
     //Populate the content as JSON obj
     Object.keys(this.form.controls).map((key) => {
       products.append(key, this.form.controls[key].value);
-      // console.log(key, this.form.controls[key].value);
     });
 
     if (this.editMode) {
+      console.log('hitsd');
       this._submitUpdateProduct(this.id, products);
     } else {
+      console.log('hit');
       this._submitCreateProduct(products);
     }
   }
