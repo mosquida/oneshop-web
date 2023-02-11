@@ -1,6 +1,15 @@
+<shop-header></shop-header>
+
 <!-- component -->
 <section class="text-gray-700 body-font overflow-hidden bg-white">
   <div class="container px-5 py-24 mx-auto">
+    <p-button
+      label="Back"
+      icon="pi pi-angle-left"
+      styleClass="p-button-secondary p-button-sm"
+      size="small"
+      routerLink="/"
+    ></p-button>
     <div class="lg:w-4/5 mx-auto flex items-start gap-20">
       <img
         alt="ecommerce"
@@ -15,23 +24,23 @@
           {{ product.name }}
         </h1>
 
-        <p
-          class="leading-relaxed pt-10"
-          [innerHTML]="product.richDescription"
-        ></p>
-
-        <div class="flex">
-          <span class="title-font font-medium text-2xl text-gray-900">{{
+        <div class="flex pt-16 justify-between">
+          <span class="title-font font-bold text-3xl text-gray-900">{{
             product.price | currency
           }}</span>
 
           <p-button
             label="Add to Cart"
             icon="pi pi-cart"
-            styleClass="text-white bg-blue-500 p-button-sm border-blue-500"
+            styleClass="text-white bg-blue-500 border-blue-500"
             size="small"
           ></p-button>
         </div>
+
+        <p
+          class="leading-relaxed pt-10"
+          [innerHTML]="product.richDescription"
+        ></p>
       </div>
     </div>
   </div>
