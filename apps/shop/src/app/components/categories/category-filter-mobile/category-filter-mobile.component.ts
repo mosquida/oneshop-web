@@ -8,12 +8,17 @@ import { CategoriesService, Category } from '@oneshop-web/categories';
 })
 export class CategoryFilterMobileComponent implements OnInit {
   categories: Category[] = [];
+  toggle = true;
 
-  constructor(private categoriesService: CategoriesService) {}
+  constructor(private categoriesService?: CategoriesService) {}
 
   ngOnInit() {
     this.categoriesService
       .getCategories()
       .subscribe((categories) => (this.categories = categories));
+  }
+
+  toggleFilter() {
+    this.toggle = !this.toggle;
   }
 }
