@@ -16,9 +16,11 @@ import { ProductItemComponent } from './components/products/product-item/product
 import { CategoryFilterMobileComponent } from './components/categories/category-filter-mobile/category-filter-mobile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'mycart', component: CartComponent },
   { path: 'product/:id', component: ProductPageComponent },
 ];
 
@@ -33,6 +35,7 @@ const routes: Routes = [
     ProductItemComponent,
     CategoryFilterMobileComponent,
     ProductPageComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
