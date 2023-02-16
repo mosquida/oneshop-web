@@ -17,6 +17,7 @@ import { CategoryFilterMobileComponent } from './components/categories/category-
 import { HttpClientModule } from '@angular/common/http';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { OrdersModule } from '@oneshop-web/orders';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,6 +45,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     ButtonModule,
     HttpClientModule,
+    OrdersModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
