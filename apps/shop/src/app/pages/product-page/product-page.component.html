@@ -39,14 +39,17 @@
               inputId="minmax-buttons"
               [min]="1"
               [max]="100"
-              styleClass="h-11 bg-indigo-600"
+              styleClass="h-11 "
+              inputStyleClass="w-16"
+              decrementButtonClass="bg-indigo-600"
+              incrementButtonClass="bg-indigo-600"
             ></p-inputNumber>
           </div>
 
           <p-button
             label="Add to Cart"
             icon="pi pi-cart-plus"
-            styleClass="text-white bg-blue-500 border-blue-500 p-button-sm pl-10"
+            styleClass="text-white bg-indigo-600  p-button-sm pl-10"
             size="small"
             (onClick)="addToCart(product._id, orderQuantity)"
           ></p-button>
