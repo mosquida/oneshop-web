@@ -10,6 +10,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@oneshop-web/ui';
 import { BadgeModule } from 'primeng/badge';
+import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { CategoryFilterComponent } from './components/categories/category-filter/category-filter.component';
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { OrdersModule } from '@oneshop-web/orders';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,6 +50,8 @@ const routes: Routes = [
     HttpClientModule,
     OrdersModule,
     BadgeModule,
+    InputNumberModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

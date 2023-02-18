@@ -10,6 +10,7 @@ import { Product, ProductsService } from '@oneshop-web/products';
 })
 export class ProductPageComponent implements OnInit {
   product: Product;
+  orderQuantity = 1;
 
   constructor(
     private productsService: ProductsService,
@@ -35,6 +36,6 @@ export class ProductPageComponent implements OnInit {
 
   addToCart(productId: string, quantity: number): void {
     this.cartService.addCartItem(productId, quantity);
-    alert(2);
+    alert(quantity);
   }
 }

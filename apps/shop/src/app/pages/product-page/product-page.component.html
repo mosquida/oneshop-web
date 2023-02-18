@@ -24,17 +24,31 @@
           {{ product.name }}
         </h1>
 
-        <div class="flex pt-16 justify-between">
+        <div class="pt-16">
           <span class="title-font font-bold text-3xl text-gray-900">{{
             product.price | currency
           }}</span>
+        </div>
+
+        <div class="flex justify-between pt-10">
+          <div class="p-field">
+            <p-inputNumber
+              [(ngModel)]="orderQuantity"
+              mode="decimal"
+              [showButtons]="true"
+              inputId="minmax-buttons"
+              [min]="1"
+              [max]="100"
+              styleClass="h-11 bg-indigo-600"
+            ></p-inputNumber>
+          </div>
 
           <p-button
             label="Add to Cart"
             icon="pi pi-cart-plus"
-            styleClass="text-white bg-blue-500 border-blue-500 p-button-sm"
+            styleClass="text-white bg-blue-500 border-blue-500 p-button-sm pl-10"
             size="small"
-            (onClick)="addToCart(product._id, 1)"
+            (onClick)="addToCart(product._id, orderQuantity)"
           ></p-button>
         </div>
 
