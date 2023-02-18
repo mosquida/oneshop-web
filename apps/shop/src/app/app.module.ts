@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@oneshop-web/ui';
+import { BadgeModule } from 'primeng/badge';
 
 import { ButtonModule } from 'primeng/button';
 import { CategoryFilterComponent } from './components/categories/category-filter/category-filter.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
     ButtonModule,
     HttpClientModule,
     OrdersModule,
+    BadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
