@@ -1,0 +1,42 @@
+<div
+  class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
+>
+  <img
+    [src]="order.product.image"
+    alt="product-image"
+    class="w-full rounded-lg sm:w-40"
+  />
+  <div class="sm:ml-4">
+    <div class="mt-5 sm:mt-0">
+      <h2 class="text-lg font-bold text-gray-900">{{ order.product.name }}</h2>
+      <p class="mt-1 text-xs text-gray-700">
+        {{ order.product.price }} per item
+      </p>
+    </div>
+    <div class="mt-4 block sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+      <div class="flex items-center border-gray-100"></div>
+      <div class="flex items-center space-x-4">
+        <p-inputNumber
+          [showButtons]="true"
+          buttonLayout="horizontal"
+          inputId="horizontal"
+          spinnerMode="horizontal"
+          [step]="1"
+          decrementButtonClass="font-white bg-black w-5"
+          incrementButtonClass="font-white bg-black h-5"
+          incrementButtonIcon="pi text-xs pi-plus"
+          decrementButtonIcon="pi text-xs pi-minus"
+          mode="currency"
+          currency="USD"
+          styleClass="h-5"
+          inputStyleClass="w-10"
+        >
+        </p-inputNumber>
+        <p class="text-medium font-bold">
+          {{ order.product.price * order.quantity | currency }}
+        </p>
+        <button><i class="pi pi-trash text-red-500"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -21,6 +21,7 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { CartComponent } from './pages/cart/cart.component';
 import { OrdersModule } from '@oneshop-web/orders';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { CartItemsComponent } from './components/cart/cart-items/cart-items.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
     CategoryFilterMobileComponent,
     ProductPageComponent,
     CartComponent,
+    CartItemsComponent,
   ],
   imports: [
     BrowserModule,
