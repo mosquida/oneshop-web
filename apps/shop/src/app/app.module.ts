@@ -22,6 +22,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { OrdersModule } from '@oneshop-web/orders';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CartItemsComponent } from './components/cart/cart-items/cart-items.component';
+import { TotalOrdersComponent } from './components/cart/total-orders/total-orders.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
     ProductPageComponent,
     CartComponent,
     CartItemsComponent,
+    TotalOrdersComponent,
   ],
   imports: [
     BrowserModule,

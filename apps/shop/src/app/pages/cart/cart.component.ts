@@ -15,20 +15,27 @@ export class CartComponent implements OnInit {
 
   orders = [];
 
+  total = 0;
+
   ngOnInit(): void {
     this.cartService.cart.subscribe((cart) => {
       // reset orders
       this.orders = [];
+      this.total = 0;
 
       // reinitialize the cart with details
       cart.items.forEach((item) => {
         this.productsService.getProduct(item.id).subscribe((product) => {
+          // populate product details
           const order = {
             product: product,
             quantity: item.quantity,
           };
 
           this.orders.push(order);
+
+          // calculate total cost
+          this.total += product.price * item.quantity;
         });
       });
     });
