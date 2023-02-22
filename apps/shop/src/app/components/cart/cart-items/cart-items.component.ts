@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CartService } from '@oneshop-web/orders';
 
 @Component({
   selector: 'oneshop-web-cart-items',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class CartItemsComponent {
   @Input() order;
+
+  constructor(private cartService: CartService) {}
+
+  deleteOrderItem(id) {
+    this.cartService.deleteCartItem(id);
+  }
 }

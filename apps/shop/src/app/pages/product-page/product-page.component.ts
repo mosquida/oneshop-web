@@ -36,6 +36,5 @@ export class ProductPageComponent implements OnInit {
 
   addToCart(productId: string, quantity: number): void {
     this.cartService.addCartItem(productId, quantity);
-    alert(quantity);
   }
 }

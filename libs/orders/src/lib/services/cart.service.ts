@@ -39,4 +39,20 @@ export class CartService {
     this.cart.next(cart);
     return cart;
   }
+
+  deleteCartItem(productId: string) {
+    const cart: Cart = this.getCart();
+
+    const newcart = cart.items.filter((item) => {
+      // return all except the specified id tp delete
+      return item.id !== productId;
+    });
+
+    // update content
+    cart.items = newcart;
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // Update Cart behavior
+    this.cart.next(cart);
+  }
 }

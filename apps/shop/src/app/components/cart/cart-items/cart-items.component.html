@@ -35,7 +35,9 @@
         <p class="text-medium font-bold">
           {{ order.product.price * order.quantity | currency }}
         </p>
-        <button><i class="pi pi-trash text-red-500"></i></button>
+        <button (click)="deleteOrderItem(order.product._id)">
+          <i class="pi pi-trash text-red-500"></i>
+        </button>
       </div>
     </div>
   </div>

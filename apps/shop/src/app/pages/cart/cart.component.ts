@@ -17,12 +17,17 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.cart.subscribe((cart) => {
+      // reset orders
+      this.orders = [];
+
+      // reinitialize the cart with details
       cart.items.forEach((item) => {
         this.productsService.getProduct(item.id).subscribe((product) => {
           const order = {
             product: product,
             quantity: item.quantity,
           };
+
           this.orders.push(order);
         });
       });
