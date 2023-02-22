@@ -40,6 +40,21 @@ export class CartService {
     return cart;
   }
 
+  updateCartItem(productId: string, quantity: number) {
+    const cart: Cart = this.getCart();
+    console.log(productId, quantity);
+    cart.items.map((item) => {
+      if (item.id === productId) item.quantity = quantity;
+      return item;
+    });
+    console.log(cart.items);
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // trigger cart behaviour new content
+    this.cart.next(cart);
+    return cart;
+  }
+
   deleteCartItem(productId: string) {
     const cart: Cart = this.getCart();
 

@@ -14,4 +14,9 @@ export class CartItemsComponent {
   deleteOrderItem(id) {
     this.cartService.deleteCartItem(id);
   }
+
+  updateOrderQuantity(id, event) {
+    const quantity = event.value;
+    this.cartService.updateCartItem(id, quantity);
+  }
 }

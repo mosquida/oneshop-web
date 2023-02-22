@@ -14,22 +14,21 @@
       </p>
     </div>
     <div class="mt-4 block sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-      <div class="flex items-center border-gray-100"></div>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-4 pt-10">
         <p-inputNumber
           [showButtons]="true"
           buttonLayout="horizontal"
           inputId="horizontal"
           spinnerMode="horizontal"
           [step]="1"
-          decrementButtonClass="font-white bg-black w-5"
-          incrementButtonClass="font-white bg-black h-5"
+          decrementButtonClass="font-white bg-black border-black w-5"
+          incrementButtonClass="font-white bg-black h-5 border-black"
           incrementButtonIcon="pi text-xs pi-plus"
           decrementButtonIcon="pi text-xs pi-minus"
-          mode="currency"
-          currency="USD"
           styleClass="h-5"
-          inputStyleClass="w-10"
+          inputStyleClass="w-16"
+          [(ngModel)]="order.quantity"
+          (onInput)="updateOrderQuantity(order.product._id, $event)"
         >
         </p-inputNumber>
         <p class="text-medium font-bold">
