@@ -42,7 +42,7 @@ export class CartService {
 
   updateCartItem(productId: string, quantity: number) {
     const cart: Cart = this.getCart();
-    console.log(productId, quantity);
+
     cart.items.map((item) => {
       if (item.id === productId) item.quantity = quantity;
       return item;

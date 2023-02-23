@@ -10,7 +10,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@oneshop-web/ui';
 import { BadgeModule } from 'primeng/badge';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { CategoryFilterComponent } from './components/categories/category-filter/category-filter.component';
@@ -23,11 +23,14 @@ import { OrdersModule } from '@oneshop-web/orders';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CartItemsComponent } from './components/cart/cart-items/cart-items.component';
 import { TotalOrdersComponent } from './components/cart/total-orders/total-orders.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'mycart', component: CartComponent },
   { path: 'product/:id', component: ProductPageComponent },
+  { path: 'checkout', component: CheckoutComponent },
 ];
 
 @NgModule({
@@ -44,6 +47,7 @@ const routes: Routes = [
     CartComponent,
     CartItemsComponent,
     TotalOrdersComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,8 @@ const routes: Routes = [
     BadgeModule,
     InputNumberModule,
     FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

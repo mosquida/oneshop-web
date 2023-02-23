@@ -9,12 +9,13 @@
   <div class="sm:ml-4">
     <div class="mt-5 sm:mt-0">
       <h2 class="text-lg font-bold text-gray-900">{{ order.product.name }}</h2>
-      <p class="mt-1 text-xs text-gray-700">
+      <!-- <p class="mt-1 text-xs text-gray-700">
         {{ order.product.price }} per item
-      </p>
+      </p> -->
+      <span class="text-gray-400">{{ order.product.price | currency }}</span>
     </div>
     <div class="mt-4 block sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-      <div class="flex items-center space-x-4 pt-10">
+      <div class="flex justify-between items-center space-x-4 pt-10">
         <p-inputNumber
           [showButtons]="true"
           buttonLayout="horizontal"
@@ -22,10 +23,10 @@
           spinnerMode="horizontal"
           [step]="1"
           decrementButtonClass="font-white bg-black border-black w-5"
-          incrementButtonClass="font-white bg-black h-5 border-black"
+          incrementButtonClass="font-white bg-black border-black"
           incrementButtonIcon="pi text-xs pi-plus"
           decrementButtonIcon="pi text-xs pi-minus"
-          styleClass="h-5"
+          styleClass="h-8"
           inputStyleClass="w-16"
           [(ngModel)]="order.quantity"
           (onInput)="updateOrderQuantity(order.product._id, $event)"
