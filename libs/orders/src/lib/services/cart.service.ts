@@ -15,6 +15,10 @@ export class CartService {
     }
   }
 
+  resetCart(): void {
+    localStorage.setItem('cart', JSON.stringify({ items: [] }));
+  }
+
   getCart() {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return JSON.parse(localStorage.getItem('cart')!);

@@ -82,6 +82,7 @@ export class CheckoutComponent implements OnInit {
     };
 
     this.ordersService.createOrder(order).subscribe((order) => {
+      this.cartService.resetCart();
       this.router.navigateByUrl('/success');
     });
   }
