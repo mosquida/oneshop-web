@@ -23,8 +23,8 @@ import { OrdersModule } from '@oneshop-web/orders';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CartItemsComponent } from './components/cart/cart-items/cart-items.component';
 import { TotalOrdersComponent } from './components/cart/total-orders/total-orders.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
