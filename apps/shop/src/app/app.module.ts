@@ -25,12 +25,14 @@ import { CartItemsComponent } from './components/cart/cart-items/cart-items.comp
 import { TotalOrdersComponent } from './components/cart/total-orders/total-orders.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { SuccessComponent } from './pages/success/success.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'mycart', component: CartComponent },
   { path: 'product/:id', component: ProductPageComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'success', component: SuccessComponent },
 ];
 
 @NgModule({
@@ -48,6 +50,7 @@ const routes: Routes = [
     CartItemsComponent,
     TotalOrdersComponent,
     CheckoutComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,
