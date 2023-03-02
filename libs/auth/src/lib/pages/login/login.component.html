@@ -7,39 +7,43 @@
       </div>
 
       <form [formGroup]="form">
-        <label for="email">Email</label>
-        <input
-          formControlName="email"
-          id="email"
-          type="text"
-          pInputText
-          class="p-inputtext-sm w-full"
-        />
-        <small
-          *ngIf="
-            (form.controls.email.touched || isSubmitted) &&
-            form.controls.email.invalid
-          "
-          class="p-error"
-          >Email is Required</small
-        >
+        <div class="mb-10">
+          <label for="email">Email</label>
+          <input
+            formControlName="email"
+            id="email"
+            type="text"
+            pInputText
+            class="p-inputtext-sm w-full"
+          />
+          <small
+            *ngIf="
+              (form.controls.email.touched || isSubmitted) &&
+              form.controls.email.invalid
+            "
+            class="p-error"
+            >Email is Required</small
+          >
+        </div>
 
-        <label for="password" class="mt-10">Password</label>
-        <input
-          formControlName="password"
-          id="password"
-          type="password"
-          pInputText
-          class="p-inputtext-sm w-full"
-        />
-        <small
-          *ngIf="
-            (form.controls.password.touched || isSubmitted) &&
-            form.controls.password.invalid
-          "
-          class="p-error"
-          >Password is Required</small
-        >
+        <div class>
+          <label for="password" class="mt-10 pt-10">Password</label>
+          <input
+            formControlName="password"
+            id="password"
+            type="password"
+            pInputText
+            class="p-inputtext-sm w-full"
+          />
+          <small
+            *ngIf="
+              (form.controls.password.touched || isSubmitted) &&
+              form.controls.password.invalid
+            "
+            class="p-error"
+            >Password is Required</small
+          >
+        </div>
 
         <small class="p-error pt-5">{{ errMessage }}</small>
         <p-button
