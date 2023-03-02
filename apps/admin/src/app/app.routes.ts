@@ -9,13 +9,13 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
 import { UsersFormComponent } from './components/users/users-form/users-form.component';
 import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './components/orders/orders-details/orders-details.component';
-import { AuthGuard } from '@oneshop-web/auth';
+import { AdminGuard } from '@oneshop-web/auth';
 
 export const appRoutes: Route[] = [
   {
     path: '',
     component: ShellComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     children: [
       {
         path: '',
