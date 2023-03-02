@@ -26,12 +26,13 @@ import { TotalOrdersComponent } from './components/cart/total-orders/total-order
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { AuthGuard, AuthModule } from '@oneshop-web/auth';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'mycart', component: CartComponent },
   { path: 'product/:id', component: ProductPageComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout', canActivate: [AuthGuard], component: CheckoutComponent },
   { path: 'success', component: SuccessComponent },
 ];
 
@@ -65,6 +66,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
