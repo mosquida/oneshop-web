@@ -7,12 +7,14 @@ import * as UsersFeature from './users.reducer';
 
 @Injectable()
 export class UsersEffects {
-  private actions$ = inject(Actions);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private actions$: any = inject(Actions);
 
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersActions.initUsers),
       fetch({
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return UsersActions.loadUsersSuccess({ users: [] });
