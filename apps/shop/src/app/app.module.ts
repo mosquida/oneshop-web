@@ -29,6 +29,7 @@ import { SuccessComponent } from './pages/success/success.component';
 import { AuthGuard, AuthModule } from '@oneshop-web/auth';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { UsersFacade } from '@oneshop-web/users';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -72,7 +73,7 @@ const routes: Routes = [
     InputTextModule,
     AuthModule,
   ],
-  providers: [],
+  providers: [UsersFacade],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
