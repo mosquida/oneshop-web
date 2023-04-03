@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
           this.orders.push(order);
 
           // calculate total cost
-          this.total += product.price * item.quantity;
+          this.total += product?.price * item.quantity;
         });
       });
     });

@@ -3,15 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../../config';
 import { User } from '../models/User';
+import { UsersFacade } from '../state/users.facade';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private usersFacade: UsersFacade, private http: HttpClient) {}
 
   initUserStateSession() {
-    return;
+    // Calls an action to dispatach via facade service
+    return this.usersFacade.buildUserStateSession();
   }
 
   getUsers(): Observable<User[]> {
