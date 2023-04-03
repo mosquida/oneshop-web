@@ -10,6 +10,10 @@ import { User } from '../models/User';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
+  initUserStateSession() {
+    return;
+  }
+
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${config.API_URL}/users`);
   }

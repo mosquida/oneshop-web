@@ -27,6 +27,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SuccessComponent } from './pages/success/success.component';
 import { AuthGuard, AuthModule } from '@oneshop-web/auth';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -58,6 +60,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
     UiModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     ButtonModule,
     HttpClientModule,
     OrdersModule,
