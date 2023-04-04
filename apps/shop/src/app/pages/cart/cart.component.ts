@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
 
       // reinitialize the cart with details
       cart.items.forEach((item) => {
-        this.productsService.getProduct(item.id).subscribe((product) => {
+        this.productsService.getProduct(item.id).subscribe((product: any) => {
           // populate product details
           const order = {
             product: product,
