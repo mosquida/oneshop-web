@@ -31,7 +31,17 @@ export const initialUsersState: UsersState = usersAdapter.getInitialState({
 // ...state = clone/copy existing
 const reducer = createReducer(
   initialUsersState,
-  on(UsersActions.buildUserStateSession, (state) => ({ ...state }))
+  on(UsersActions.buildUserStateSession, (state) => ({ ...state })),
+  on(UsersActions.buildUserStateSessionSuccess, (state, action) => ({
+    ...state,
+    user: action.user,
+    isAuthenticated: true,
+  })),
+  on(UsersActions.buildUserStateSessionFailure, (state) => ({
+    ...state,
+    user: null,
+    isAuthenticated: false,
+  }))
 );
 
 export function usersReducer(state: UsersState | undefined, action: Action) {
