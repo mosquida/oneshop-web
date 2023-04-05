@@ -15,4 +15,16 @@ export class LocalStorageService {
   removeToken(): void {
     return localStorage.removeItem('token');
   }
+
+  isTokenValid(): boolean {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      if (decodedToken) return true;
+
+      return false;
+    }
+
+    return false;
+  }
 }
