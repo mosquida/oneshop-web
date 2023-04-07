@@ -27,4 +27,16 @@ export class LocalStorageService {
 
     return false;
   }
+
+  getUserIdFromToken(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      if (decodedToken) {
+        return decodedToken?.userId;
+      }
+    }
+
+    return null;
+  }
 }
