@@ -1,11 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { LocalStorageService } from '@oneshop-web/auth';
 import { ObservableInput, catchError, concatMap, map, of } from 'rxjs';
 
 import * as UsersActions from './users.actions';
-import * as UsersFeature from './users.reducer';
-import { UsersService } from '@oneshop-web/users';
+import { UsersService } from '../services/users.service';
 
 @Injectable()
 export class UsersEffects {
