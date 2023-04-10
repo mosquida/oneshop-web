@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { CartService, OrdersService } from '@oneshop-web/orders';
 import { Product, ProductsService } from '@oneshop-web/products';
-import * as console from 'console';
+import { UsersFacade } from '@oneshop-web/users';
 
 @Component({
   selector: 'oneshop-web-checkout',
@@ -16,17 +17,20 @@ export class CheckoutComponent implements OnInit {
     private productsService: ProductsService,
     private formBuilder: FormBuilder,
     private ordersService: OrdersService,
-    private router: Router
+    private router: Router,
+    private usersFacade: UsersFacade,
+    private store: Store
   ) {}
 
   orders = [];
   total = 0;
+  userId;
   form: FormGroup;
 
   ngOnInit(): void {
     this._populateOrders();
-
     this._createForm();
+    this._autocompleteForm();
   }
 
   private _populateOrders(): void {
@@ -59,6 +63,14 @@ export class CheckoutComponent implements OnInit {
       shippingAddress: [''],
       country: [''],
       phone: [''],
+    });
+  }
+
+  private _autocompleteForm(): void {
+    this.usersFacade.currentUser$.subscribe(() => {
+      // this.userId = user._id;
+      console.log('2323');
+      // this.form.controls.country.setValue();
     });
   }
 

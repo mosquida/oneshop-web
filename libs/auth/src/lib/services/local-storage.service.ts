@@ -18,6 +18,7 @@ export class LocalStorageService {
 
   isTokenValid(): boolean {
     const token = this.getToken();
+    console.log(token);
     if (token) {
       const decodedToken = JSON.parse(atob(token.split('.')[1]));
       if (decodedToken) return true;

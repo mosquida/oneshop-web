@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Injectable, inject } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { LocalStorageService } from '@oneshop-web/auth';
 import { ObservableInput, catchError, concatMap, map, of } from 'rxjs';
@@ -10,9 +10,10 @@ import { UsersService } from '../services/users.service';
 @Injectable()
 export class UsersEffects {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private actions$: any = inject(Actions);
+  // private actions$: any = inject(Actions);
 
   constructor(
+    private actions$: Actions,
     private localStorageService: LocalStorageService,
     private usersService: UsersService
   ) {}
@@ -20,10 +21,11 @@ export class UsersEffects {
   // this.action$.pipe = subscribe to Actions events from ngrx
   // ofType() = name of action to listen then do something with
   // concatMap = map response action into new action, waits or previous to finish
-  buildUserStateSession$ = createEffect(() =>
+  buildUserStateSession$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(UsersActions.buildUserStateSession),
       concatMap((): any => {
+        console.log(2323);
         if (this.localStorageService.isTokenValid()) {
           // Run buildUserStateSession Success Action(Set User and Auth)
 
@@ -32,9 +34,11 @@ export class UsersEffects {
           if (userId) {
             this.usersService.getUser(userId).pipe(
               map((user) => {
-                return UsersActions.buildUserStateSessionSuccess({
-                  user: user,
-                });
+                // console.log(user);
+                // return UsersActions.buildUserStateSessionSuccess({
+                //   user: user,
+                // });
+                return of(UsersActions.buildUserStateSessionFailure());
               }),
               catchError((): ObservableInput<any> => {
                 return of(UsersActions.buildUserStateSessionFailure());
@@ -43,7 +47,7 @@ export class UsersEffects {
           }
         } else {
           // RUn buildUserStateSession Failure Action (Reset)
-          return of(UsersActions.buildUserStateSessionFailure());
+          return UsersActions.buildUserStateSessionFailure();
         }
       })
     )

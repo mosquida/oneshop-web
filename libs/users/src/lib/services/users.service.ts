@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { config } from '../../config';
 import { User } from '../models/User';
 import { UsersFacade } from '../state/users.facade';
@@ -34,5 +34,13 @@ export class UsersService {
 
   deleteUser(id: string) {
     return this.http.delete(`${config.API_URL}/users/${id}`);
+  }
+
+  currentUser() {
+    return of(this.usersFacade.currentUser$);
+  }
+
+  isCurrentUserAuthenticated() {
+    return of(this.usersFacade.isAuthenticated$);
   }
 }
