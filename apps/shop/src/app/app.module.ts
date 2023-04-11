@@ -16,7 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { CategoryFilterComponent } from './components/categories/category-filter/category-filter.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
 import { CategoryFilterMobileComponent } from './components/categories/category-filter-mobile/category-filter-mobile.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { OrdersModule } from '@oneshop-web/orders';
@@ -26,10 +26,10 @@ import { TotalOrdersComponent } from './components/cart/total-orders/total-order
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SuccessComponent } from './pages/success/success.component';
-import { AuthGuard, AuthModule } from '@oneshop-web/auth';
+import { AuthGuard, AuthModule, JwtInterceptor } from '@oneshop-web/auth';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { UsersFacade } from '@oneshop-web/users';
+import { UsersFacade, UsersModule } from '@oneshop-web/users';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -72,8 +72,16 @@ const routes: Routes = [
     ReactiveFormsModule,
     InputTextModule,
     AuthModule,
+    UsersModule,
   ],
-  providers: [UsersFacade],
+  providers: [
+    UsersFacade,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

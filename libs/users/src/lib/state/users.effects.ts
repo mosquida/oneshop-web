@@ -32,18 +32,12 @@ export class UsersEffects {
           const userId = this.localStorageService.getUserIdFromToken();
 
           if (userId) {
-            this.usersService.getUser(userId).pipe(
-              map((user) => {
-                // console.log(user);
-                // return UsersActions.buildUserStateSessionSuccess({
-                //   user: user,
-                // });
-                return of(UsersActions.buildUserStateSessionFailure());
-              }),
-              catchError((): ObservableInput<any> => {
-                return of(UsersActions.buildUserStateSessionFailure());
-              })
-            );
+            this.usersService.getUser(userId).subscribe((user) => {
+              console.log(user);
+              return UsersActions.buildUserStateSessionSuccess({
+                user: user,
+              });
+            });
           }
         } else {
           // RUn buildUserStateSession Failure Action (Reset)

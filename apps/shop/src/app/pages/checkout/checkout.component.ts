@@ -69,7 +69,7 @@ export class CheckoutComponent implements OnInit {
   private _autocompleteForm(): void {
     this.usersFacade.currentUser$.subscribe(() => {
       // this.userId = user._id;
-      console.log('2323');
+      console.log('Not working');
       // this.form.controls.country.setValue();
     });
   }
