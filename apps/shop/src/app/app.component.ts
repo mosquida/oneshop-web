@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '@oneshop-web/users';
+import { Store } from '@ngrx/store';
+import { UsersFacade, UsersService, UsersState } from '@oneshop-web/users';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'oneshop-web-root',
@@ -9,9 +11,21 @@ import { UsersService } from '@oneshop-web/users';
 export class AppComponent implements OnInit {
   title = 'shop';
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private usersFacade: UsersFacade
+  ) {}
 
   ngOnInit() {
     this.usersService.initUserStateSession();
+
+    this.usersFacade.isAuthenticated$.subscribe((user) => {
+      console.log('tets');
+      console.log(user);
+    });
+
+    this.usersFacade.currentUser$.subscribe((user) => {
+      console.log(user);
+    });
   }
 }

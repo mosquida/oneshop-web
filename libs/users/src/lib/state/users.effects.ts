@@ -2,7 +2,7 @@
 import { Inject, Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { LocalStorageService } from '@oneshop-web/auth';
-import { ObservableInput, catchError, concatMap, map, of } from 'rxjs';
+import { catchError, concatMap, map, of } from 'rxjs';
 
 import * as UsersActions from './users.actions';
 import { UsersService } from '../services/users.service';
@@ -10,10 +10,9 @@ import { UsersService } from '../services/users.service';
 @Injectable()
 export class UsersEffects {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // private actions$: any = inject(Actions);
+  private actions$ = inject(Actions);
 
   constructor(
-    private actions$: Actions,
     private localStorageService: LocalStorageService,
     private usersService: UsersService
   ) {}
@@ -21,28 +20,17 @@ export class UsersEffects {
   // this.action$.pipe = subscribe to Actions events from ngrx
   // ofType() = name of action to listen then do something with
   // concatMap = map response action into new action, waits or previous to finish
-  buildUserStateSession$ = createEffect((): any =>
+  buildUserStateSession$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersActions.buildUserStateSession),
-      concatMap((): any => {
-        console.log(2323);
-        if (this.localStorageService.isTokenValid()) {
-          // Run buildUserStateSession Success Action(Set User and Auth)
-
-          const userId = this.localStorageService.getUserIdFromToken();
-
-          if (userId) {
-            this.usersService.getUser(userId).subscribe((user) => {
-              console.log(user);
-              return UsersActions.buildUserStateSessionSuccess({
-                user: user,
-              });
-            });
-          }
-        } else {
-          // RUn buildUserStateSession Failure Action (Reset)
-          return UsersActions.buildUserStateSessionFailure();
-        }
+      concatMap(() => {
+        const id = this.localStorageService.getUserIdFromToken();
+        return this.usersService.getUser(id).pipe(
+          map((user) =>
+            UsersActions.buildUserStateSessionSuccess({ user: user })
+          ),
+          catchError(() => of(UsersActions.buildUserStateSessionFailure()))
+        );
       })
     )
   );
