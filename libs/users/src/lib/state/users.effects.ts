@@ -25,12 +25,17 @@ export class UsersEffects {
       ofType(UsersActions.buildUserStateSession),
       concatMap(() => {
         const id = this.localStorageService.getUserIdFromToken();
-        return this.usersService.getUser(id).pipe(
-          map((user) =>
-            UsersActions.buildUserStateSessionSuccess({ user: user })
-          ),
-          catchError(() => of(UsersActions.buildUserStateSessionFailure()))
-        );
+        if (id) {
+          // use pipe to return an action not observable
+          return this.usersService.getUser(id).pipe(
+            map((user) =>
+              UsersActions.buildUserStateSessionSuccess({ user: user })
+            ),
+            catchError(() => of(UsersActions.buildUserStateSessionFailure()))
+          );
+        }
+
+        return of(UsersActions.buildUserStateSessionFailure());
       })
     )
   );

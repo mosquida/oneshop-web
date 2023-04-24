@@ -58,6 +58,8 @@ export class CheckoutComponent implements OnInit {
   private _createForm(): void {
     // create form group
     this.form = this.formBuilder.group({
+      email: [''],
+      name: [''],
       user: [''],
       orderItems: [this.formBuilder.array(this.cartService.getCart().items)],
       shippingAddress: [''],
@@ -67,10 +69,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   private _autocompleteForm(): void {
-    this.usersFacade.currentUser$.subscribe(() => {
-      // this.userId = user._id;
-      console.log('Not working');
-      // this.form.controls.country.setValue();
+    this.usersFacade.currentUser$.subscribe((user) => {
+      if (user._id) this.userId = user._id;
+
+      this.form.controls.email.setValue(user.email);
+      this.form.controls.name.setValue(user.name);
+      this.form.controls.shippingAddress.setValue(
+        user.address + ', ' + user.country
+      );
     });
   }
 
