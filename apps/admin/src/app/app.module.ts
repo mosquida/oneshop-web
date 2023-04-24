@@ -40,6 +40,10 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
 import { UsersFormComponent } from './components/users/users-form/users-form.component';
 import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './components/orders/orders-details/orders-details.component';
+import { UsersFacade, UsersModule } from '@oneshop-web/users';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 const PRIMENG_MODULE = [
   InputTextModule,
@@ -84,8 +88,22 @@ const PRIMENG_MODULE = [
     ReactiveFormsModule,
     ...PRIMENG_MODULE,
     AuthModule,
+    UsersModule,
+    StoreModule.forRoot(
+      {},
+      {
+        metaReducers: [],
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true,
+        },
+      }
+    ),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
+    UsersFacade,
     ConfirmationService,
     MessageService,
     CategoriesService,

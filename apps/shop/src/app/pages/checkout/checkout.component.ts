@@ -70,13 +70,15 @@ export class CheckoutComponent implements OnInit {
 
   private _autocompleteForm(): void {
     this.usersFacade.currentUser$.subscribe((user) => {
-      if (user._id) this.userId = user._id;
+      if (user) {
+        if (user._id) this.userId = user._id;
 
-      this.form.controls.email.setValue(user.email);
-      this.form.controls.name.setValue(user.name);
-      this.form.controls.shippingAddress.setValue(
-        user.address + ', ' + user.country
-      );
+        this.form.controls.email.setValue(user.email);
+        this.form.controls.name.setValue(user.name);
+        this.form.controls.shippingAddress.setValue(
+          user.address + ', ' + user.country
+        );
+      }
     });
   }
 
