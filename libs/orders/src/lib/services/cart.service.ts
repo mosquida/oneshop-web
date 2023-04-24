@@ -17,6 +17,7 @@ export class CartService {
 
   resetCart(): void {
     localStorage.setItem('cart', JSON.stringify({ items: [] }));
+    this.cart.next({ items: [] });
   }
 
   getCart() {
