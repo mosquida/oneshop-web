@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { CartService, OrdersService } from '@oneshop-web/orders';
+import { CartService, OrdersService, StripeSession } from '@oneshop-web/orders';
 import { Product, ProductsService } from '@oneshop-web/products';
 import { UsersFacade } from '@oneshop-web/users';
+import { StripeService } from 'ngx-stripe';
 
 @Component({
   selector: 'oneshop-web-checkout',
@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit {
     private ordersService: OrdersService,
     private router: Router,
     private usersFacade: UsersFacade,
-    private store: Store
+    private stripeService: StripeService
   ) {}
 
   orders = [];
@@ -93,17 +93,27 @@ export class CheckoutComponent implements OnInit {
       orderItems.push(orderItem);
     });
 
-    const order = {
-      orderItems: orderItems,
-      shippingAddress: this.form.controls.shippingAddress.value,
-      country: this.form.controls.country.value,
-      phone: this.form.controls.phone.value,
-      user: userId,
-    };
+    // Create Stripe Checkout Sessuib -> redirect to checkout
+    this.ordersService
+      .checkout(orderItems)
+      .subscribe((session: StripeSession) => {
+        console.log(session.id);
+        this.stripeService
+          .redirectToCheckout({ sessionId: session.id })
+          .subscribe();
+      });
 
-    this.ordersService.createOrder(order).subscribe((order) => {
-      this.cartService.resetCart();
-      this.router.navigateByUrl('/success');
-    });
+    // const order = {
+    //   orderItems: orderItems,
+    //   shippingAddress: this.form.controls.shippingAddress.value,
+    //   country: this.form.controls.country.value,
+    //   phone: this.form.controls.phone.value,
+    //   user: userId,
+    // };
+
+    // this.ordersService.createOrder(order).subscribe((order) => {
+    //   this.cartService.resetCart();
+    //   this.router.navigateByUrl('/success');
+    // });
   }
 }

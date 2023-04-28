@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../models/order';
 import { config } from '../../config';
+import { OrderItem } from '../models/order-item';
+import { StripeSession } from '../models/stripeSession';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +30,12 @@ export class OrdersService {
 
   deleteOrder(id: string) {
     return this.http.delete(`${config.API_URL}/orders/${id}`);
+  }
+
+  checkout(orderItem: OrderItem[]): Observable<StripeSession> {
+    return this.http.post<StripeSession>(
+      `${config.API_URL}/orders/create-checkout-session`,
+      orderItem
+    );
   }
 }

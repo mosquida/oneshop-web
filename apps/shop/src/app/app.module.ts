@@ -11,6 +11,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@oneshop-web/ui';
 import { BadgeModule } from 'primeng/badge';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxStripeModule } from 'ngx-stripe';
 
 import { ButtonModule } from 'primeng/button';
 import { CategoryFilterComponent } from './components/categories/category-filter/category-filter.component';
@@ -73,6 +74,7 @@ const routes: Routes = [
     InputTextModule,
     AuthModule,
     UsersModule,
+    NgxStripeModule.forRoot('pk_test_51N1AH8IZfMO7HnKKOBu3Cc5sk24Ui8CC2KaZzemer2486tW4Dw0fjIBteOdx5zJeLXSTXZbCVCH7JbbEOzoB3Gza0063uacg9v')
   ],
   providers: [
     UsersFacade,
